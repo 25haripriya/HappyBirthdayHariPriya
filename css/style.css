@@ -1,0 +1,7 @@
+.image-slider {
+    overflow: hidden;
+  }
+
+  .image-slider img {
+    transition: transform 1s ease-in-out;
+  }
