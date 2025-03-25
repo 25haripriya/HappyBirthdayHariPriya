@@ -46,13 +46,27 @@
             width: 90%;
             height: 90%;
         }
+        .pageBreak{
+            display: none;
+        }
+        @media print{
+            .pageBreak{
+                display: block;
+                page-break-after: always;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="boxContainer">
         <div class="img box1"><img src="box1.png" alt=""></div>
         <div class="img box2"><img src="box2.png" alt=""></div>
-        <div class="img box3"><img src="ani.jpeg" alt=""></div>
+        <div class="img box3"><img src="box3.1.png" alt=""></div>
+        <div class="img box4"><img src="boxD.jpeg" alt=""></div>
+        <div class="pageBreak"></div>
+        <div class="img box3"><img src="download (2).jpeg" alt=""></div>
+        <div class="img box3"><img src="boxD.jpeg" alt=""></div>
+
     </div>
 </body>
 </html>
