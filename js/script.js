@@ -9,4 +9,3 @@ swipers.forEach((swiper) => {
     spaceBetween: 10,
   });
 });
-
