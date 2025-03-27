@@ -1,39 +1,70 @@
 .image-slider {
-    overflow: hidden;
-  }
+  overflow: hidden;
+}
 
-  .image-slider img {
-    transition: transform 1s ease-in-out;
-  }
-  @media only screen and (max-width:480px){
-    .gridView{
-      padding: 20px;
-      margin: 0 auto;
-      width: 100%;
-    }
-  }
-  .card4,.card5{
-    position: relative;
-  }
-  .card4::before{
-    content: "";
-    display: block;
+.image-slider img {
+  transition: transform 1s ease-in-out;
+}
+
+.card4,
+.card5 {
+  position: relative;
+}
+
+.card4::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 5px;
+  background: white;
+  position: absolute;
+  top: calc(50% - 2.5px);
+  left: 0;
+  z-index: 2;
+}
+
+.card5::before {
+  content: "";
+  display: block;
+  width: 5px;
+  height: 100%;
+  background: white;
+  position: absolute;
+  left: calc(50% - 2.5px);
+  top: 0;
+  z-index: 2;
+}
+.swiper-slide{
+  object-fit: contain;
+}
+
+@media only screen and (max-width:768px){
+  .gridView {
+    padding: 20px;
+    margin: 0 auto;
     width: 100%;
-    height: 5px;
-    background: white;
-    position: absolute;
-    top: calc(50% - 2.5px );
-    left: 0;
-    z-index: 2;
   }
-  .card5::before{
-    content: "";
-    display: block;
-    width: 5px;
-    height: 100%;
-    background: white;
-    position: absolute;
-    left: calc(50% - 2.5px );
-    top: 0;
-    z-index: 2;
+  .mySwiper1{
+    height: 240px;
   }
+  .mySwiper4{
+    height: 240px;
+  }
+}
+
+@media only screen and (max-width:480px) {
+  .gridView {
+    padding: 20px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .mySwiper1{
+    height: 120px;
+  }
+  .mySwiper4{
+    height: 120px;
+  }
+  /* .mySwiper5{
+    
+  } */
+}
