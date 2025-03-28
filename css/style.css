@@ -32,6 +32,10 @@ p > a:first-of-type {
 }
 /* Canvas End */
 
+.booContainer img{
+  display: block;
+  margin: 0 auto;
+}
 .image-slider {
   overflow: hidden;
 }
