@@ -4,13 +4,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Happy Birthday Hari</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/x-icon" href="/images/fav.png">
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="er.robin" data-description="Support me on Buy me a coffee!" data-message="" data-color="#BD5FFF" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        .popupScreen{
+            width: 100vw;
+            height: 100vh;
+            position: absolute;
+            top: 0;
+            z-index: 10;
+        }
+    </style>
 </head>
 
-<body>
+<body id="body">
+
+    <div class="popupScreen" id="popupScreen">
+        <canvas style="width: 100%; height: 100%;" id=c></canvas>
+    </div>
+
     <div class="bannerSection p-4">
         <div class="banner max-w-4xl mx-auto">
             <img class="h-full w-full" src="images/test_Image.jpg" alt="Banner Image"
@@ -18,7 +35,13 @@
         </div>
     </div>
 
-<!-- slider -->
+    <div class="boo">
+        <div class="booContainer">
+            <img src="images/boo.jpeg" alt="">
+        </div>
+    </div>
+
+    <!-- slider -->
     <div class="slider overflow-auto">
         <div class="gridView grid grid-cols-3 grid-rows-3 gap-2 w-[900px] max-w-4xl p-0 m-auto ">
             <!-- <div class="col-span-2 row-span-2">
@@ -94,34 +117,53 @@
                     </div>
                 </div>
             </div>  -->
-            
+
             <div class="row-start-1 col-start-1">
                 <div class="swiper mySwiper mySwiper1 h-[300px] rounded p-4 ">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide"><img class="h-full w-full" src="images/1.jpeg" alt=""></div>
-                        <div class="swiper-slide"><img class="h-full w-full" src="images/11.jpeg" alt=""></div>
-                        <div class="swiper-slide"><img class="h-full w-full" src="images/111.jpeg" alt=""></div>
-                        
+                        <div class="swiper-slide"><img class="h-full w-full" src="images/h1.png" alt=""></div>
+                        <div class="swiper-slide"><img class="h-full w-full" src="images/h3.png" alt=""></div>
+                        <div class="swiper-slide"><img class="h-full w-full" src="images/h4.png" alt=""></div>
+                        <div class="swiper-slide"><img class="h-full w-full" src="images/h14.png" alt=""></div>
+                        <div class="swiper-slide"><img class="h-full w-full" src="images/h15.png" alt=""></div>
+                        <div class="swiper-slide"><img class="h-full w-full" src="images/h16.png" alt=""></div>
+                        <div class="swiper-slide"><img class="h-full w-full" src="images/h31.png" alt=""></div>
+                        <div class="swiper-slide"><img class="h-full w-full" src="images/h32.png" alt=""></div>
+                        <div class="swiper-slide"><img class="h-full w-full" src="images/h33.png" alt=""></div>
+                        <div class="swiper-slide"><img class="h-full w-full" src="images/h34.png" alt=""></div>
+
                     </div>
                 </div>
             </div>
             <div class="row-start-1 col-start-2 col-span-2 row-span-2">
                 <div class="swiper mySwiper mySwiper2 rounded h-full p-4 ">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide"><img class="h-full w-full" src="images/2.jpeg" alt=""></div>
-                        <div class="swiper-slide"><img class="h-full w-full" src="images/22.jpeg" alt=""></div>
-                        <div class="swiper-slide"><img class="h-full w-full" src="images/222.jpeg" alt=""></div>
-                        
+                        <div class="swiper-slide"><img class="h-full w-full" src="images/h11.png" alt=""></div>
+                        <div class="swiper-slide"><img class="h-full w-full" src="images/h12.png" alt=""></div>
+                        <div class="swiper-slide"><img class="h-full w-full" src="images/h40.png" alt=""></div>
+                        <div class="swiper-slide"><img class="h-full w-full" src="images/h20.png" alt=""></div>
+                        <div class="swiper-slide"><img class="h-full w-full" src="images/h21.png" alt=""></div>
+                        <div class="swiper-slide"><img class="h-full w-full" src="images/h22.png" alt=""></div>
+                        <div class="swiper-slide"><img class="h-full w-full" src="images/h23.png" alt=""></div>
+                        <div class="swiper-slide"><img class="h-full w-full" src="images/h25.png" alt=""></div>
+                        <div class="swiper-slide"><img class="h-full w-full" src="images/h26.png" alt=""></div>
+                        <div class="swiper-slide"><img class="h-full w-full" src="images/h37.png" alt=""></div>
                     </div>
                 </div>
             </div>
             <div class="row-start-2 col-start-1 row-span-2">
                 <div class="swiper mySwiper mySwiper3 rounded h-full p-4 ">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide"><img class="h-full w-full" src="images/3.jpeg" alt=""></div>
-                        <div class="swiper-slide"><img class="h-full w-full" src="images/33.jpeg" alt=""></div>
-                        <div class="swiper-slide"><img class="h-full w-full" src="images/333.jpeg" alt=""></div>
-                        
+                        <div class="swiper-slide"><img class="h-full w-full" src="images/h9.png" alt=""></div>
+                        <div class="swiper-slide"><img class="h-full w-full" src="images/h2.png" alt=""></div>
+                        <div class="swiper-slide"><img class="h-full w-full" src="images/h7.png" alt=""></div>
+                        <div class="swiper-slide"><img class="h-full w-full" src="images/h51.png" alt=""></div>
+                        <div class="swiper-slide"><img class="h-full w-full" src="images/h52.png" alt=""></div>
+                        <div class="swiper-slide"><img class="h-full w-full" src="images/h53.png" alt=""></div>
+                        <div class="swiper-slide"><img class="h-full w-full" src="images/h54.png" alt=""></div>
+                        <div class="swiper-slide"><img class="h-full w-full" src="images/h55.png" alt=""></div>
+                        <div class="swiper-slide"><img class="h-full w-full" src="images/h9.png" alt=""></div>
+                        <div class="swiper-slide"><img class="h-full w-full" src="images/h8.png" alt=""></div>
                     </div>
                 </div>
             </div>
@@ -138,18 +180,33 @@
             <div class="row-start-3 col-start-2">
                 <div class="swiper mySwiper mySwiper4 h-[300px] rounded card4 p-4 ">
                     <div class="swiper-wrapper ">
-                        <div class="swiper-slide"><img class="h-full w-full" src="images/4.jpeg" alt=""></div>
-                        <div class="swiper-slide"><img class="h-full w-full" src="images/44.jpeg" alt=""></div>
-                        <div class="swiper-slide"><img class="h-full w-full" src="images/444.jpeg" alt=""></div>
+                        <div class="swiper-slide"><img class="h-full w-full" src="images/h35.png" alt=""></div>
+                        <div class="swiper-slide"><img class="h-full w-full" src="images/h36.png" alt=""></div>
+                        <div class="swiper-slide"><img class="h-full w-full" src="images/h38.png" alt=""></div>
+                        <div class="swiper-slide"><img class="h-full w-full" src="images/h39.png" alt=""></div>
+                        <div class="swiper-slide"><img class="h-full w-full" src="images/h40.png" alt=""></div>
+                        <div class="swiper-slide"><img class="h-full w-full" src="images/h41.png" alt=""></div>
+                        <div class="swiper-slide"><img class="h-full w-full" src="images/h42.png" alt=""></div>
+                        <div class="swiper-slide"><img class="h-full w-full" src="images/h43.png" alt=""></div>
+                        <div class="swiper-slide"><img class="h-full w-full" src="images/h44.png" alt=""></div>
+                        <div class="swiper-slide"><img class="h-full w-full" src="images/h45.png" alt=""></div>
+
                     </div>
                 </div>
             </div>
             <div class="row-start-3 col-start-3">
-                <div class="swiper mySwiper mySwiper5 xrounded card5 h-full p-4 ">
+                <div class="swiper mySwiper mySwiper5 rounded card5 h-full p-4 ">
                     <div class="swiper-wrapper ">
-                        <div class="swiper-slide"><img class="h-full w-full" src="images/5.jpeg" alt=""></div>
-                        <div class="swiper-slide"><img class="h-full w-full" src="images/55.jpeg" alt=""></div>
-                        <div class="swiper-slide"><img class="h-full w-full" src="images/555.jpeg" alt=""></div>
+                        <div class="swiper-slide"><img class="h-full w-full" src="images/h46.png" alt=""></div>
+                        <div class="swiper-slide"><img class="h-full w-full" src="images/h47.png" alt=""></div>
+                        <div class="swiper-slide"><img class="h-full w-full" src="images/h48.png" alt=""></div>
+                        <div class="swiper-slide"><img class="h-full w-full" src="images/h49.png" alt=""></div>
+                        <div class="swiper-slide"><img class="h-full w-full" src="images/h50.png" alt=""></div>
+                        <div class="swiper-slide"><img class="h-full w-full" src="images/h17.png" alt=""></div>
+                        <div class="swiper-slide"><img class="h-full w-full" src="images/h18.png" alt=""></div>
+                        <div class="swiper-slide"><img class="h-full w-full" src="images/h19.png" alt=""></div>
+                        <div class="swiper-slide"><img class="h-full w-full" src="images/h24.png" alt=""></div>
+                        <div class="swiper-slide"><img class="h-full w-full" src="images/h5.png" alt=""></div>
                     </div>
                 </div>
             </div>
@@ -163,6 +220,7 @@
 
 
     <script src="js/script.js"></script>
+    <script src="js/canvas.js"></script>
 </body>
 
 </html>
