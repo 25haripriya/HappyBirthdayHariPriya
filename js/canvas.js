@@ -403,7 +403,7 @@ window.addEventListener( 'resize', function(){
 setTimeout(() => {
     document.getElementById("popupScreen").style.display = "none";
     document.getElementById("body").style.overflow = "auto";
-},12700);
+},12630);
 
 
 if(window.screenX <= "500px" ){
