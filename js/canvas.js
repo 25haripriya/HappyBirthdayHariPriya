@@ -404,4 +404,4 @@ window.addEventListener( 'resize', function(){
 setTimeout(() => {
     document.getElementById("popupScreen").style.display = "none";
     document.getElementById("body").style.overflow = "auto";
-},12700);
+},13000);
