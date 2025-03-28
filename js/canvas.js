@@ -6,46 +6,47 @@ var w = c.width = window.innerWidth,
 		hh = h / 2,
 		
 		opts = {
-			strings: [ 'HAPPY', 'BIRTHDAY!','MINE' ],
-			charSize: 30,
-			charSpacing: 35,
-			lineHeight: 40,
-			
-			cx: w / 2,
-			cy: h / 2,
-			
-			fireworkPrevPoints: 10,
-			fireworkBaseLineWidth: 5,
-			fireworkAddedLineWidth: 8,
-			fireworkSpawnTime: 200,
-			fireworkBaseReachTime: 30,
-			fireworkAddedReachTime: 30,
-			fireworkCircleBaseSize: 20,
-			fireworkCircleAddedSize: 10,
-			fireworkCircleBaseTime: 30,
-			fireworkCircleAddedTime: 30,
-			fireworkCircleFadeBaseTime: 10,
-			fireworkCircleFadeAddedTime: 5,
-			fireworkBaseShards: 5,
-			fireworkAddedShards: 5,
-			fireworkShardPrevPoints: 3,
-			fireworkShardBaseVel: 4,
-			fireworkShardAddedVel: 2,
-			fireworkShardBaseSize: 3,
-			fireworkShardAddedSize: 3,
-			gravity: .1,
-			upFlow: -.1,
-			letterContemplatingWaitTime: 360,
-			balloonSpawnTime: 20,
-			balloonBaseInflateTime: 10,
-			balloonAddedInflateTime: 10,
-			balloonBaseSize: 20,
-			balloonAddedSize: 20,
-			balloonBaseVel: .4,
-			balloonAddedVel: .4,
-			balloonBaseRadian: -( Math.PI / 2 - .5 ),
-			balloonAddedRadian: -1,
-		},
+    strings: ['HAPPY', 'BIRTHDAY!', 'MINE'],
+    charSize: 30,
+    charSpacing: 35,
+    lineHeight: 40,
+
+    cx: w / 2,
+    cy: h / 2,
+
+    fireworkPrevPoints: 10,
+    fireworkBaseLineWidth: 5,
+    fireworkAddedLineWidth: 8,
+    fireworkSpawnTime: 600,  // Increased from 200 to 600
+    fireworkBaseReachTime: 90,  // Increased from 30 to 90
+    fireworkAddedReachTime: 60, // Increased from 30 to 60
+    fireworkCircleBaseSize: 20,
+    fireworkCircleAddedSize: 10,
+    fireworkCircleBaseTime: 90,  // Increased from 30 to 90
+    fireworkCircleAddedTime: 60, // Increased from 30 to 60
+    fireworkCircleFadeBaseTime: 30, // Increased from 10 to 30
+    fireworkCircleFadeAddedTime: 20, // Increased from 5 to 20
+    fireworkBaseShards: 5,
+    fireworkAddedShards: 5,
+    fireworkShardPrevPoints: 3,
+    fireworkShardBaseVel: 2,  // Reduced speed for longer duration
+    fireworkShardAddedVel: 1,
+    fireworkShardBaseSize: 3,
+    fireworkShardAddedSize: 3,
+    gravity: 0.05, // Reduced gravity for slower fall
+    upFlow: -0.05, // Slower rise
+
+    letterContemplatingWaitTime: 1000, // Increased from 360 to 1000 (pause before balloons)
+    balloonSpawnTime: 60, // Increased from 20 to 60
+    balloonBaseInflateTime: 30, // Increased from 10 to 30
+    balloonAddedInflateTime: 20, // Increased from 10 to 20
+    balloonBaseSize: 20,
+    balloonAddedSize: 20,
+    balloonBaseVel: 0.2, // Slower balloons
+    balloonAddedVel: 0.2,
+    balloonBaseRadian: -(Math.PI / 2 - 0.5),
+    balloonAddedRadian: -1,
+},
 		calc = {
 			totalWidth: opts.charSpacing * Math.max( opts.strings[0].length, opts.strings[1].length )
 		},
