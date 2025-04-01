@@ -1,8 +1,5 @@
 
-if(window.screenX <= "500px"){
-	setTimeout(()=>{
-		alert("Run2");
-	},1000)
+if(window.innerWidth <= 500){
     var w = c.width = window.innerWidth,
 		h = c.height = window.innerHeight,
 		ctx = c.getContext( '2d' ),
@@ -410,7 +407,8 @@ setTimeout(() => {
     document.getElementById("popupScreen").style.display = "none";
     document.getElementById("body").style.overflow = "auto";
 },14000);
-}else{
+}
+else{
 	var w = c.width = window.innerWidth,
 		h = c.height = window.innerHeight,
 		ctx = c.getContext( '2d' ),
