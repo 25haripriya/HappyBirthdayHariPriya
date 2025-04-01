@@ -1,4 +1,8 @@
-var w = c.width = window.innerWidth,
+if(window.screenX >= "500px"){
+	setTimeout(()=>{
+		alert("Run1");
+	})
+	var w = c.width = window.innerWidth,
 		h = c.height = window.innerHeight,
 		ctx = c.getContext( '2d' ),
 		
@@ -405,8 +409,11 @@ setTimeout(() => {
     document.getElementById("body").style.overflow = "auto";
 },12600);
 
-
-if(window.screenX <= "500px" ){
+}
+if(window.screenX <= "500px"){
+	setTimeout(()=>{
+		alert("Run2");
+	})
     var w = c.width = window.innerWidth,
 		h = c.height = window.innerHeight,
 		ctx = c.getContext( '2d' ),
