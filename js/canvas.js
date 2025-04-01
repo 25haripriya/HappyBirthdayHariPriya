@@ -2,7 +2,7 @@
 if(window.screenX <= "500px"){
 	setTimeout(()=>{
 		alert("Run2");
-	})
+	},1000)
     var w = c.width = window.innerWidth,
 		h = c.height = window.innerHeight,
 		ctx = c.getContext( '2d' ),
