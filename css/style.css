@@ -88,6 +88,9 @@ p > a:first-of-type {
   .mySwiper4{
     height: 240px;
   }
+  .job{
+    width: 100%;
+  }
 }
 
 @media only screen and (max-width:480px) {
@@ -102,7 +105,7 @@ p > a:first-of-type {
   .mySwiper4{
     height: 135px;
   }
-  /* .mySwiper5{
-    
-  } */
+  .job{
+    width: 100%;
+  }
 }
